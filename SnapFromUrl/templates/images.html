@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Image Gallery</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+</head>
+<body class="bg-[#F9F9F9] p-6 ">
+    <h1 class="text-5xl font-extrabold text-[#31511E] text-center mb-10 leading-tight relative">
+        Images from <span class="text-gradient bg-clip-text"> {{ url }} </span>
+        <div class="absolute inset-0 bg-gradient-to-r from-[#31511E] to-[#859F3D] opacity-20 rounded-lg transform scale-10 z-[-1]"></div>
+    </h1>
+
+    <div class="text-center flex flex-col gap-20">
+        <a href="/" class="text-[#31511E] font-semibold text-4xl hover:text-[#859F3D] transition duration-300">Go back to home</a>
+
+    <div class="flex flex-wrap justify-center gap-6">
+        {% for image in images %}
+            <div class="relative group bg-white rounded-lg overflow-hidden shadow-md transform transition duration-300 ease-in-out hover:scale-105">
+                <a href="{{ image.src }}" alt="{{ image.alt }}" target="_blank" class="block">
+                    <img src="{{ image.src }}" alt="{{ image.alt }}" class="w-48 h-48 object-cover rounded-lg">
+                    <div class="absolute inset-0 bg-black bg-opacity-40 opacity-0 group-hover:opacity-100 transition-opacity duration-200 flex items-center justify-center">
+                        <span class="text-white text-lg font-bold">View Image</span>
+                    </div>
+                </a>
+            </div>
+        {% endfor %}
+    </div>
+</body>
+</html>
